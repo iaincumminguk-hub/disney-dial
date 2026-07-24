@@ -9,7 +9,7 @@ import {
 const CX = 115
 const CY = 100
 const RADIUS = 82
-const TICK_VALUES = [-10, -5, 0, 5, 10]
+const TICK_VALUES = [-50, -25, 0, 25, 50]
 
 const ARC_PATH = `M ${CX - RADIUS},${CY} A ${RADIUS},${RADIUS} 0 0 1 ${CX + RADIUS},${CY}`
 

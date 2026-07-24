@@ -1,5 +1,5 @@
-export const MIN_POINTS = -10
-export const MAX_POINTS = 10
+export const MIN_POINTS = -50
+export const MAX_POINTS = 50
 
 export function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
@@ -7,11 +7,11 @@ export function clamp(value, min, max) {
 
 // Color stops running from "not going" (red) to "going" (green).
 const COLOR_STOPS = [
-  { value: -10, color: [239, 68, 68] }, // red-500
-  { value: -5, color: [249, 115, 22] }, // orange-500
+  { value: -50, color: [239, 68, 68] }, // red-500
+  { value: -25, color: [249, 115, 22] }, // orange-500
   { value: 0, color: [250, 204, 21] }, // yellow-400
-  { value: 5, color: [132, 204, 22] }, // lime-500
-  { value: 10, color: [34, 197, 94] }, // green-500
+  { value: 25, color: [132, 204, 22] }, // lime-500
+  { value: 50, color: [34, 197, 94] }, // green-500
 ]
 
 function lerp(a, b, t) {
