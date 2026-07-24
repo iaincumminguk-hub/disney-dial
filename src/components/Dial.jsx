@@ -19,7 +19,7 @@ export default function Dial({ points }) {
 
   return (
     <div className="relative w-full max-w-md mx-auto select-none">
-      <svg viewBox="0 0 230 210" className="w-full h-auto overflow-visible">
+      <svg viewBox="0 0 230 225" className="w-full h-auto overflow-visible">
         <defs>
           <linearGradient id="dialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ef4444" />
@@ -69,13 +69,15 @@ export default function Dial({ points }) {
         })}
 
         {/* End labels — offset well clear of the arc on both axes */}
-        <text x={CX - RADIUS} y={CY + 34} fontSize="10" fontWeight="700" className="fill-red-500">
-          <tspan x={CX - RADIUS} dy="0">NOT GOING</tspan>
-          <tspan x={CX - RADIUS} dy="13">TO DISNEY</tspan>
+        <text x={CX - RADIUS} y={CY + 34} fontSize="11" fontWeight="700" className="fill-red-500">
+          <tspan x={CX - RADIUS} dy="0">Nope!</tspan>
+          <tspan x={CX - RADIUS} dy="14">He's not</tspan>
+          <tspan x={CX - RADIUS} dy="14">going!</tspan>
         </text>
-        <text x={CX + RADIUS} y={CY + 34} fontSize="10" fontWeight="700" textAnchor="end" className="fill-green-600">
-          <tspan x={CX + RADIUS} dy="0">GOING TO</tspan>
-          <tspan x={CX + RADIUS} dy="13">DISNEY</tspan>
+        <text x={CX + RADIUS} y={CY + 34} fontSize="11" fontWeight="700" textAnchor="end" className="fill-green-600">
+          <tspan x={CX + RADIUS} dy="0">Yes!</tspan>
+          <tspan x={CX + RADIUS} dy="14">He's</tspan>
+          <tspan x={CX + RADIUS} dy="14">going!</tspan>
         </text>
 
         {/* Needle */}
@@ -102,7 +104,7 @@ export default function Dial({ points }) {
         {/* Center readout */}
         <text
           x={CX}
-          y={CY + 82}
+          y={CY + 96}
           textAnchor="middle"
           fontSize="34"
           fontWeight="800"
@@ -112,7 +114,7 @@ export default function Dial({ points }) {
         </text>
         <text
           x={CX}
-          y={CY + 98}
+          y={CY + 112}
           textAnchor="middle"
           fontSize="9"
           letterSpacing="1.5"

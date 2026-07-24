@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
+/* Switch the `dark:` variant from system-preference-based to an explicit
+   `.dark` class on <html>, so the in-app toggle can control it directly. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-script: "Grand Hotel", cursive;
 }
 
 :root {
   color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -15,4 +23,18 @@ body {
 
 #root {
   min-height: 100svh;
+}
+
+@keyframes fairy-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+.fairy-float {
+  animation: fairy-float 3.5s ease-in-out infinite;
 }
