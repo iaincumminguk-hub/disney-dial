@@ -6,9 +6,9 @@ import {
   valueToRotation,
 } from '../utils/gauge'
 
-const CX = 100
+const CX = 115
 const CY = 100
-const RADIUS = 90
+const RADIUS = 82
 const TICK_VALUES = [-10, -5, 0, 5, 10]
 
 const ARC_PATH = `M ${CX - RADIUS},${CY} A ${RADIUS},${RADIUS} 0 0 1 ${CX + RADIUS},${CY}`
@@ -19,7 +19,7 @@ export default function Dial({ points }) {
 
   return (
     <div className="relative w-full max-w-md mx-auto select-none">
-      <svg viewBox="0 0 200 148" className="w-full h-auto overflow-visible">
+      <svg viewBox="0 0 230 210" className="w-full h-auto overflow-visible">
         <defs>
           <linearGradient id="dialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ef4444" />
@@ -51,8 +51,8 @@ export default function Dial({ points }) {
         {/* Tick marks */}
         {TICK_VALUES.map((v) => {
           const rot = valueToRotation(v)
-          const inner = polarFromVertical(CX, CY, 74, rot)
-          const outer = polarFromVertical(CX, CY, 80, rot)
+          const inner = polarFromVertical(CX, CY, RADIUS - 16, rot)
+          const outer = polarFromVertical(CX, CY, RADIUS - 10, rot)
           return (
             <line
               key={v}
@@ -68,14 +68,14 @@ export default function Dial({ points }) {
           )
         })}
 
-        {/* End labels */}
-        <text x="4" y="112" fontSize="9" fontWeight="700" className="fill-red-500">
-          <tspan x="4" dy="0">NOT GOING</tspan>
-          <tspan x="4" dy="10">TO DISNEY</tspan>
+        {/* End labels — offset well clear of the arc on both axes */}
+        <text x={CX - RADIUS} y={CY + 34} fontSize="10" fontWeight="700" className="fill-red-500">
+          <tspan x={CX - RADIUS} dy="0">NOT GOING</tspan>
+          <tspan x={CX - RADIUS} dy="13">TO DISNEY</tspan>
         </text>
-        <text x="196" y="112" fontSize="9" fontWeight="700" textAnchor="end" className="fill-green-600">
-          <tspan x="196" dy="0">GOING TO</tspan>
-          <tspan x="196" dy="10">DISNEY</tspan>
+        <text x={CX + RADIUS} y={CY + 34} fontSize="10" fontWeight="700" textAnchor="end" className="fill-green-600">
+          <tspan x={CX + RADIUS} dy="0">GOING TO</tspan>
+          <tspan x={CX + RADIUS} dy="13">DISNEY</tspan>
         </text>
 
         {/* Needle */}
@@ -90,7 +90,7 @@ export default function Dial({ points }) {
             x1={CX}
             y1={CY}
             x2={CX}
-            y2={CY - 62}
+            y2={CY - 58}
             stroke="#1e293b"
             strokeWidth="6"
             strokeLinecap="round"
@@ -101,20 +101,20 @@ export default function Dial({ points }) {
 
         {/* Center readout */}
         <text
-          x="100"
-          y="130"
+          x={CX}
+          y={CY + 82}
           textAnchor="middle"
-          fontSize="30"
+          fontSize="34"
           fontWeight="800"
           fill={color}
         >
           {points > 0 ? `+${points}` : points}
         </text>
         <text
-          x="100"
-          y="142"
+          x={CX}
+          y={CY + 98}
           textAnchor="middle"
-          fontSize="8"
+          fontSize="9"
           letterSpacing="1.5"
           fontWeight="600"
           className="fill-slate-400 dark:fill-slate-500"
@@ -122,7 +122,7 @@ export default function Dial({ points }) {
           POINTS
         </text>
       </svg>
-      <p className="text-center text-xs text-slate-400 dark:text-slate-500 -mt-1">
+      <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-1">
         Scale: {MIN_POINTS} to {MAX_POINTS}
       </p>
     </div>
