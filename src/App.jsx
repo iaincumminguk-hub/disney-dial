@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Dial from './components/Dial'
 import PointControls from './components/PointControls'
 import HistoryLog from './components/HistoryLog'
+import BackgroundDecor from './components/BackgroundDecor'
 import { useLocalStorageState } from './hooks/useLocalStorageState'
 import { clamp, MAX_POINTS, MIN_POINTS } from './utils/gauge'
 
@@ -50,10 +51,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-svh bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-      <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="relative min-h-svh bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+      <BackgroundDecor />
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-8">
         <header className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <h1 className="font-script text-5xl sm:text-6xl leading-tight text-indigo-600 dark:text-indigo-300">
             Disney Dial
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1">
