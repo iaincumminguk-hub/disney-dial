@@ -3,7 +3,10 @@ import Dial from './components/Dial'
 import PointControls from './components/PointControls'
 import HistoryLog from './components/HistoryLog'
 import BackgroundDecor from './components/BackgroundDecor'
+import ThemeToggle from './components/ThemeToggle'
+import FairyIcon from './components/FairyIcon'
 import { useLocalStorageState } from './hooks/useLocalStorageState'
+import { useTheme } from './hooks/useTheme'
 import { clamp, MAX_POINTS, MIN_POINTS } from './utils/gauge'
 
 const STORAGE_KEY = 'disney-dial-state-v1'
@@ -23,6 +26,7 @@ function makeEntry({ delta, reason, resultingPoints }) {
 function App() {
   const [state, setState] = useLocalStorageState(STORAGE_KEY, DEFAULT_STATE)
   const [reason, setReason] = useState('')
+  const { theme, toggleTheme } = useTheme()
   const { points, history } = state
 
   function handleApplyDelta(delta) {
@@ -54,9 +58,11 @@ function App() {
     <div className="relative min-h-svh bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
       <BackgroundDecor />
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-8">
-        <header className="text-center mb-8">
-          <h1 className="font-script text-5xl sm:text-6xl leading-tight text-indigo-600 dark:text-indigo-300">
-            Disney Dial
+        <header className="relative text-center mb-8">
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          <FairyIcon className="fairy-float mx-auto h-14 w-14 sm:h-16 sm:w-16" />
+          <h1 className="font-script text-4xl sm:text-5xl leading-tight text-indigo-600 dark:text-indigo-300">
+            Is Ethan going to Disneyland?
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1">
             Every choice moves the needle.
